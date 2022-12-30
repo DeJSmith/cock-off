@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/cock-off/static/css/main.4b82ad14.css",
+    "main.js": "/cock-off/static/js/main.b7f9d4f4.js",
+    "static/media/cock.jpg": "/cock-off/static/media/cock.9c109a721d20f749b730.jpg",
+    "index.html": "/cock-off/index.html",
+    "main.4b82ad14.css.map": "/cock-off/static/css/main.4b82ad14.css.map",
+    "main.b7f9d4f4.js.map": "/cock-off/static/js/main.b7f9d4f4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4b82ad14.css",
+    "static/js/main.b7f9d4f4.js"
+  ]
+}
