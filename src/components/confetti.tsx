@@ -11,6 +11,9 @@ export const ConfettiRain: React.FC = () => {
     console.log(isRaining);
 
     useEffect(() => {
+        if (!isRaining) {
+            setConfetti([]);
+        }
         if (isRaining) {
             const interval = setInterval(() => {
                 setConfetti((prevConfetti) => [
