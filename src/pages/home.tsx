@@ -48,17 +48,38 @@ export const Home: React.FC = () => {
                                 alignItems="center"
                                 w="300px"
                             >
-                                <Text w="50px" fontWeight="bold" mr="1rem">
+                                <Text
+                                    w={[50, 100]}
+                                    fontSize={["0.8rem", "1rem"]}
+                                    fontWeight="bold"
+                                    mr="1rem"
+                                >
                                     Rank
                                 </Text>
-                                <Text w="100px" fontWeight="bold" mr="1rem">
+                                <Text
+                                    w={[50, 100]}
+                                    fontSize={["0.8rem", "1rem"]}
+                                    fontWeight="bold"
+                                    mr="1rem"
+                                >
                                     Name
                                 </Text>
-                                <Text w="100px" fontWeight="bold" mr="1rem">
+                                <Text
+                                    w={[100, 200]}
+                                    fontSize={["0.8rem", "1rem"]}
+                                    fontWeight="bold"
+                                    mr="1rem"
+                                >
                                     Beverage
                                 </Text>
                             </Box>
-                            <Text fontWeight="bold">Score</Text>
+                            <Text
+                                w={"auto"}
+                                fontSize={["0.8rem", "1rem"]}
+                                fontWeight="bold"
+                            >
+                                Score
+                            </Text>
                         </Box>
                         {contestants.length === 0 && (
                             <Box>There are no contestants</Box>

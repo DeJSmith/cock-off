@@ -40,13 +40,13 @@ export const ContestantCard: React.FC<Props> = ({
                 alignItems="center"
                 w="300px"
             >
-                <Text w="50px" mr="1rem">
+                <Text w={[50, 100]} fontSize={["0.8rem", "1rem"]} mr="1rem">
                     {index + 1}
                 </Text>
-                <Text w="100px" mr="1rem">
+                <Text w={[50, 100]} fontSize={["0.8rem", "1rem"]} mr="1rem">
                     {contestant.name}
                 </Text>
-                <Text w="200px" mr="1rem">
+                <Text w={[100, 200]} fontSize={["0.8rem", "1rem"]} mr="1rem">
                     {contestant.beverage}
                 </Text>
             </Box>

@@ -40,7 +40,11 @@ export const ContestantModal: React.FC<Props> = ({
 
     return (
         <>
-            <Modal isOpen={isOpen} onClose={() => onClose()} size="2xl">
+            <Modal
+                isOpen={isOpen}
+                onClose={() => onClose()}
+                size={["sm", "2xl"]}
+            >
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>
