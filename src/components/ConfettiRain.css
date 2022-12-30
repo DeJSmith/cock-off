@@ -1,0 +1,44 @@
+.confetti-rain {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: -99;
+}
+
+.confetti-piece {
+    position: absolute;
+    border-radius: 50%;
+    animation: fall 1s ease-in-out infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translate;
+    }
+}
+
+@keyframes drop {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+.confetti {
+    animation: drop 3s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(360deg) perspective(0);
+    }
+}
+
+.spinner {
+    animation: rotate 1s linear infinite;
+}
