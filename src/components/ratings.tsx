@@ -1,4 +1,4 @@
-import { List, Box, Heading } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
 import React from "react";
 import { Rating } from "../types";
 import { ScoreTable } from "./scoreTable";

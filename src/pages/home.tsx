@@ -12,8 +12,6 @@ export const Home: React.FC = () => {
     const { contestants, loading } = useContestants();
     const [isOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState<null | Contestant>(null);
-    console.log(contestants);
-    console.log("selected", selected);
 
     const selectContestant = (contestant: Contestant) => {
         setSelected(contestant);
@@ -75,6 +73,7 @@ export const Home: React.FC = () => {
                             </Box>
                             <Text
                                 w={"auto"}
+                                mr="3rem"
                                 fontSize={["0.8rem", "1rem"]}
                                 fontWeight="bold"
                             >

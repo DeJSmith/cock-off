@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Alert, useDisclosure } from "@chakra-ui/react";
+import { Alert } from "@chakra-ui/react";
 
 type Props = {
     message: string;

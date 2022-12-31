@@ -1,12 +1,18 @@
-import React from "react";
-import { Contestant, Rating } from "../types";
-import { getContestants, addContestant } from "../database/contestant";
+import React, { useEffect } from "react";
+import { getContestants } from "../database/contestant";
 import { useRecoilState } from "recoil";
 import { contestantsState } from "../store";
 
 export const useContestants = () => {
     const [contestants, setContestants] = useRecoilState(contestantsState);
-    console.log("contestants", contestants);
+
+    // refetch the contestants every 60 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setContestants({ ...contestants, stale: true });
+        }, 30000);
+        return () => clearInterval(interval);
+    }, []);
 
     React.useEffect(() => {
         const fetchContestants = async () => {

@@ -8,7 +8,6 @@ const rain = ["🍆", "🫄", "🫃🏿", "💩", "🤡", "🤖"];
 export const ConfettiRain: React.FC = () => {
     const [confetti, setConfetti] = useState<any[]>([]);
     const isRaining = useRecoilValue(makeItRainState);
-    console.log(isRaining);
 
     useEffect(() => {
         if (!isRaining) {

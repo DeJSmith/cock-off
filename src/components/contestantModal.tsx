@@ -16,7 +16,6 @@ import { Contestant } from "../types";
 import { RatingForm } from "./ratingForm";
 import { Scores } from "./scores";
 import { ContestantBadge } from "./contestantBadge";
-import { Ratings } from "./ratings";
 
 type Props = {
     onClose: () => void;
@@ -43,7 +42,7 @@ export const ContestantModal: React.FC<Props> = ({
             <Modal
                 isOpen={isOpen}
                 onClose={() => onClose()}
-                size={["sm", "2xl"]}
+                size={["sm", "md", "2xl"]}
             >
                 <ModalOverlay />
                 <ModalContent>

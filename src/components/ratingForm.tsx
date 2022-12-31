@@ -1,5 +1,5 @@
-import React from "react";
-import { FormControl, FormLabel, Button, Alert } from "@chakra-ui/react";
+import React, { useMemo } from "react";
+import { FormControl, FormLabel, Button, Box, Heading } from "@chakra-ui/react";
 import { Contestant } from "../types";
 import { RatingSlider } from "./slider";
 import { useContestantActions } from "../actions/contestantActions";
@@ -7,6 +7,8 @@ import { nanoid } from "nanoid";
 import { useMakeItRain } from "../hooks/makeItRain";
 import { useDevice } from "../hooks/device";
 import { TemporaryAlert } from "./alert";
+import { calculateOverallScore } from "../utils/tools";
+import { RatingLabel } from "./ratingLabel";
 
 interface FormProps {
     contestant: Contestant;
@@ -48,8 +50,7 @@ export const RatingForm: React.FC<FormProps> = ({ contestant, clear }) => {
             return;
         }
         makeItRain();
-        const overallRating =
-            (visualRating + tasteRating + creativityRating) / 3;
+        const overallRating = calculateOverallScore(contestant);
         addContestantRating(contestant, {
             overallRating,
             visualRating,
@@ -62,6 +63,12 @@ export const RatingForm: React.FC<FormProps> = ({ contestant, clear }) => {
         clear();
     };
 
+    const overallRating = useMemo(
+        () =>
+            (dangerRating + tasteRating + visualRating + creativityRating) / 4,
+        [dangerRating, tasteRating, visualRating, creativityRating]
+    );
+
     return (
         <>
             <TemporaryAlert
@@ -69,6 +76,18 @@ export const RatingForm: React.FC<FormProps> = ({ contestant, clear }) => {
                 onClose={() => setErr(false)}
                 message="Sorry champ you can't vote more than once per person 😝"
             />
+            <Box
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
+                justifyContent="center"
+                minW="100px"
+            >
+                <Heading size="md" mr={4}>
+                    Overall Rating:
+                </Heading>
+                <RatingLabel fontSize="2xl" score={overallRating} label="" />
+            </Box>
             <form onSubmit={(e) => onSubmit(e)}>
                 <FormControl>
                     <FormLabel htmlFor="visual-rating">

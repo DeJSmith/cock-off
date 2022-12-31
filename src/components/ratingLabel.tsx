@@ -25,8 +25,8 @@ export const RatingLabel: React.FC<Props> = ({ label, score, ...rest }) => {
                     {label}
                 </Heading>
             )}
-            <Text>{emoji}</Text>
             <Tag colorScheme={color}>{rating} / 10</Tag>
+            <Text>{emoji}</Text>
         </Box>
     );
 };

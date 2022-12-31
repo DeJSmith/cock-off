@@ -1,4 +1,4 @@
-import { Stack, StackDivider, Heading, Tag, Box } from "@chakra-ui/react";
+import { Stack, StackDivider, Box } from "@chakra-ui/react";
 import React from "react";
 import { Contestant } from "../types";
 import { RatingLabel } from "./ratingLabel";
