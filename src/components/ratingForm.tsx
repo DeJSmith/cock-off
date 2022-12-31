@@ -7,7 +7,7 @@ import { nanoid } from "nanoid";
 import { useMakeItRain } from "../hooks/makeItRain";
 import { useDevice } from "../hooks/device";
 import { TemporaryAlert } from "./alert";
-import { calculateOverallScore } from "../utils/tools";
+import { calculateOverallScore, round } from "../utils/tools";
 import { RatingLabel } from "./ratingLabel";
 
 interface FormProps {
@@ -50,7 +50,9 @@ export const RatingForm: React.FC<FormProps> = ({ contestant, clear }) => {
             return;
         }
         makeItRain();
-        const overallRating = calculateOverallScore(contestant);
+        const overallRating = round(
+            (dangerRating + tasteRating + creativityRating + visualRating) / 4
+        );
         addContestantRating(contestant, {
             overallRating,
             visualRating,

@@ -7,11 +7,10 @@ export const useContestants = () => {
     const [contestants, setContestants] = useRecoilState(contestantsState);
     const [canRefresh, _] = useRecoilState(canRefreshState);
 
-    // refetch the contestants every 60 seconds
     useEffect(() => {
         const interval = setInterval(() => {
             setContestants({ ...contestants, stale: true });
-        }, 30000);
+        }, 20000);
         return () => clearInterval(interval);
     }, []);
 

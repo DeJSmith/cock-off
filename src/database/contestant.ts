@@ -71,9 +71,11 @@ export const addRating = async (
     contestant: Contestant,
     rating: Rating
 ): Promise<void> => {
+    console.log("addRating", contestant, rating);
     const newContestant = {
         ...contestant,
         ratings: [...contestant.ratings, rating],
     };
+    console.log(calculateRatings(newContestant));
     await updateContestant(calculateRatings(newContestant));
 };
