@@ -5,6 +5,7 @@ import { Rating } from "../types";
 
 const calculateRatings = (contestant: Contestant): Contestant => {
     const { ratings } = contestant;
+    console.log(ratings);
     const overallRating =
         ratings.reduce((acc, rating) => acc + rating.overallRating, 0) /
         ratings.length;
@@ -40,7 +41,7 @@ export const getContestants = async (): Promise<Contestant[]> => {
                 const d = doc.data();
                 data.push(d as Contestant);
             });
-            resolve(data);
+            resolve(data.map((c) => calculateRatings(c) as Contestant));
         })
     );
 };
@@ -71,10 +72,16 @@ export const addRating = async (
     contestant: Contestant,
     rating: Rating
 ): Promise<void> => {
-    console.log("addRating", contestant, rating);
-    const newContestant = {
-        ...contestant,
-        ratings: [...contestant.ratings, rating],
+    const contestants = await getContestants();
+    let newContestant = contestants.find(
+        (c) => c.id === contestant.id
+    ) as Contestant;
+
+    if (!newContestant) return;
+
+    newContestant = {
+        ...newContestant,
+        ratings: [...newContestant.ratings, rating],
     };
     console.log(calculateRatings(newContestant));
     await updateContestant(calculateRatings(newContestant));
