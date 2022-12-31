@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/cock-off/static/css/main.4b82ad14.css",
-    "main.js": "/cock-off/static/js/main.e16e4e20.js",
+    "main.js": "/cock-off/static/js/main.c8da9cc7.js",
     "static/media/cock.jpg": "/cock-off/static/media/cock.9c109a721d20f749b730.jpg",
     "index.html": "/cock-off/index.html",
     "main.4b82ad14.css.map": "/cock-off/static/css/main.4b82ad14.css.map",
-    "main.e16e4e20.js.map": "/cock-off/static/js/main.e16e4e20.js.map"
+    "main.c8da9cc7.js.map": "/cock-off/static/js/main.c8da9cc7.js.map"
   },
   "entrypoints": [
     "static/css/main.4b82ad14.css",
-    "static/js/main.e16e4e20.js"
+    "static/js/main.c8da9cc7.js"
   ]
 }
