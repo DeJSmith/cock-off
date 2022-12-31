@@ -12,19 +12,19 @@ export const Scores: React.FC<Props> = ({ contestant }) => {
     return (
         <Stack divider={<StackDivider />} spacing="4">
             <RatingLabel
-                label="Overall Visual Rating"
+                label="Average Visual Rating"
                 score={contestant.visualRating}
             />
             <RatingLabel
-                label="Overall Taste Rating"
+                label="Average Taste Rating"
                 score={contestant.tasteRating}
             />
             <RatingLabel
-                label="Overall Danger Rating"
+                label="Average Danger Rating"
                 score={contestant.dangerRating}
             />
             <RatingLabel
-                label="Overall Creativity Rating"
+                label="Average Creativity Rating"
                 score={contestant.creativityRating}
             />
             <Box>

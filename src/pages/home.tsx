@@ -7,13 +7,22 @@ import { Contestant } from "../types";
 import { useContestants } from "../hooks/useContestants";
 import { ConfettiRain } from "../components/confetti";
 import { EmojiSpinner } from "../components/spinner";
+import { useRecoilState } from "recoil";
+import { canRefreshState } from "../store";
 
 export const Home: React.FC = () => {
     const { contestants, loading } = useContestants();
+    const [_, setCanRefresh] = useRecoilState(canRefreshState);
     const [isOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState<null | Contestant>(null);
 
+    const closeModal = () => {
+        setIsOpen(false);
+        setCanRefresh(true);
+    };
+
     const selectContestant = (contestant: Contestant) => {
+        setCanRefresh(false);
         setSelected(contestant);
         setIsOpen(true);
     };
@@ -21,6 +30,7 @@ export const Home: React.FC = () => {
     const clear = () => {
         setSelected(null);
         setIsOpen(false);
+        setCanRefresh(true);
     };
 
     return (
@@ -97,7 +107,7 @@ export const Home: React.FC = () => {
                             <ContestantModal
                                 contestant={selected}
                                 isOpen={isOpen}
-                                onClose={() => setIsOpen(false)}
+                                onClose={closeModal}
                                 clear={clear}
                             />
                         )}

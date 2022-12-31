@@ -32,7 +32,7 @@ export const ScoreTable: React.FC<Props> = ({ scores }) => {
                 <Tbody>
                     {scores.map((s, i) => (
                         <Tr key={s.id}>
-                            <Td>{i + 1}</Td>
+                            <Td fontWeight="bold">{i + 1}</Td>
                             <Td>{round(s.visualRating)}</Td>
                             <Td>{round(s.tasteRating)}</Td>
                             <Td>{round(s.creativityRating)}</Td>

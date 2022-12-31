@@ -30,3 +30,8 @@ export const makeItRainState = atom({
     key: "raining",
     default: false,
 });
+
+export const canRefreshState = atom({
+    key: "canRefresh",
+    default: true,
+});

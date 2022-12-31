@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { getContestants } from "../database/contestant";
 import { useRecoilState } from "recoil";
-import { contestantsState } from "../store";
+import { contestantsState, canRefreshState } from "../store";
 
 export const useContestants = () => {
     const [contestants, setContestants] = useRecoilState(contestantsState);
+    const [canRefresh, _] = useRecoilState(canRefreshState);
 
     // refetch the contestants every 60 seconds
     useEffect(() => {
@@ -28,10 +29,10 @@ export const useContestants = () => {
             }
         };
 
-        if (!contestants.loading || contestants.stale) {
+        if ((!contestants.loading || contestants.stale) && canRefresh) {
             fetchContestants();
         }
-    }, [contestants.stale]);
+    }, [contestants.stale, canRefresh]);
 
     return {
         contestants: [...contestants.contestants].sort(
