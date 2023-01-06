@@ -2,6 +2,7 @@ import { db } from "../utils/firebase";
 import { doc, setDoc, query, collection, onSnapshot } from "firebase/firestore";
 import { Contestant } from "../types/contestant";
 import { Rating } from "../types";
+import { isNaN } from "lodash";
 
 const calculateRatings = (contestant: Contestant): Contestant => {
     const { ratings } = contestant;
@@ -24,11 +25,11 @@ const calculateRatings = (contestant: Contestant): Contestant => {
 
     return {
         ...contestant,
-        overallRating,
-        tasteRating,
-        visualRating,
-        creativityRating,
-        dangerRating,
+        overallRating: isNaN(overallRating) ? 0 : overallRating,
+        tasteRating: isNaN(tasteRating) ? 0 : tasteRating,
+        visualRating: isNaN(visualRating) ? 0 : visualRating,
+        creativityRating: isNaN(creativityRating) ? 0 : creativityRating,
+        dangerRating: isNaN(dangerRating) ? 0 : dangerRating,
     };
 };
 
@@ -73,15 +74,15 @@ export const addRating = async (
     rating: Rating
 ): Promise<void> => {
     const contestants = await getContestants();
-    let newContestant = contestants.find(
+    let fetchedContestant = contestants.find(
         (c) => c.id === contestant.id
     ) as Contestant;
 
-    if (!newContestant) return;
+    if (!fetchedContestant) return;
 
-    newContestant = {
-        ...newContestant,
-        ratings: [...newContestant.ratings, rating],
+    const newContestant = {
+        ...fetchedContestant,
+        ratings: [...fetchedContestant.ratings, rating],
     };
     console.log(calculateRatings(newContestant));
     await updateContestant(calculateRatings(newContestant));
